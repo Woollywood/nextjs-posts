@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { cn } from '@/utils/classNames';
 import './globals.css';
+import Header from '@/components/shared/Header';
+import Footer from '@/components/shared/Footer';
 
 const roboto = Roboto({
 	variable: '--font-primary',
@@ -21,7 +23,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={cn(roboto.variable, 'container')}>{children}</body>
+			<body className={cn(roboto.variable, 'grid min-h-screen grid-rows-[auto_1fr_auto] gap-12')}>
+				<Header className='' />
+				<main className='container'>{children}</main>
+				<Footer className='container' />
+			</body>
 		</html>
 	);
 }
