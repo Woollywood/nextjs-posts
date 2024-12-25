@@ -19,6 +19,9 @@ export default {
 			fontFamily: {
 				primary: ['var(--font-primary)'],
 			},
+			spacing: {
+				'header-height': 'var(--header-height)',
+			},
 		},
 	},
 	plugins: [],
