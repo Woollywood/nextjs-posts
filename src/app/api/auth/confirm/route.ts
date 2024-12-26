@@ -5,8 +5,6 @@ import { MobileOtpType } from '@supabase/supabase-js';
 
 // Creating a handler to a GET request to route /auth/confirm
 export async function GET(request: NextRequest) {
-	console.log('confirm');
-
 	const { searchParams } = new URL(request.url);
 	const token_hash = searchParams.get('token_hash');
 	const type = searchParams.get('type') as MobileOtpType;
