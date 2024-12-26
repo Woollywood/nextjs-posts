@@ -14,18 +14,16 @@ interface SigninFields {
 	email: string;
 	password: string;
 }
-type SigninFormState =
-	| {
-			errors?: {
-				email?: string[];
-				password?: string[];
-			};
-			state: SigninFields;
-			message?: string;
-	  }
-	| undefined;
+export type SigninFormState = {
+	errors?: {
+		email?: string[];
+		password?: string[];
+	};
+	state: SigninFields;
+	message?: string;
+};
 
-export async function signin(prevState: SigninFormState, formData: FormData): Promise<SigninFormState> {
+export async function signin(prevState: SigninFormState | undefined, formData: FormData): Promise<SigninFormState> {
 	const supabase = await createClient();
 
 	const formFields = {
@@ -62,21 +60,18 @@ interface SignupFields {
 	email: string;
 	password: string;
 }
-type SignupFormState =
-	| {
-			errors?: {
-				firstName?: string[];
-				lastName?: string[];
-				email?: string[];
-				password?: string[];
-			};
+export type SignupFormState = {
+	errors?: {
+		firstName?: string[];
+		lastName?: string[];
+		email?: string[];
+		password?: string[];
+	};
+	state: SignupFields;
+	message?: string;
+};
 
-			state: SignupFields;
-			message?: string;
-	  }
-	| undefined;
-
-export async function signup(prevState: SignupFormState, formData: FormData): Promise<SignupFormState> {
+export async function signup(prevState: SignupFormState | undefined, formData: FormData): Promise<SignupFormState> {
 	const supabase = await createClient();
 
 	const formFields = {
