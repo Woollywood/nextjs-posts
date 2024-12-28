@@ -100,3 +100,18 @@ export async function signup(prevState: SignupFormState | undefined, formData: F
 	revalidatePath('/', 'layout');
 	redirect('/confirm');
 }
+
+export async function signout() {
+	const supabase = await createClient();
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
+	if (user) {
+		await supabase.auth.signOut();
+	}
+
+	revalidatePath('/', 'layout');
+	redirect('/');
+}

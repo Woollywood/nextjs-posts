@@ -1,9 +1,11 @@
 import React from 'react';
 import { NextPage } from 'next';
+import Form from 'next/form';
 import { cn } from '@/utils/classNames';
 import Link from 'next/link';
 import { createClient } from '@/libs/supabase/server';
 import { Button } from '../ui/Button';
+import { signout } from '@/app/(authentication)/actions';
 
 const Header: NextPage<React.HTMLAttributes<HTMLHeadElement>> = async ({ className, ...props }) => {
 	const session = await createClient();
@@ -18,9 +20,9 @@ const Header: NextPage<React.HTMLAttributes<HTMLHeadElement>> = async ({ classNa
 					Logo
 				</Link>
 				{user ? (
-					<form action='/api/auth/sign-out' method='post'>
+					<Form action={signout}>
 						<Button>Sign out</Button>
-					</form>
+					</Form>
 				) : (
 					<div className='flex items-center gap-2'>
 						<Link href='/sign-in'>
